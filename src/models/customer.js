@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     customer.init({
-        cust_code: DataTypes.STRING,
+        cust_code: {
+            type:DataTypes.STRING,
+            primaryKey: true},
         cust_name: DataTypes.STRING,
         cust_city: DataTypes.CHAR,
         working_area: DataTypes.STRING,
@@ -28,11 +30,11 @@ module.exports = (sequelize, DataTypes) => {
         outstanding_amt: DataTypes.DECIMAL,
         phone_no: DataTypes.STRING,
         agent_code: DataTypes.CHAR,
-        createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
     },{
         sequelize,
         modelName: 'customer',
+        freezeTableName: true,
+        timestamps: false
     });
     return customer;
 }

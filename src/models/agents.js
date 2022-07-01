@@ -14,17 +14,20 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     agents.init({
-        agent_code: DataTypes.CHAR,
+        agent_code: {
+            primaryKey: true,
+            type: DataTypes.CHAR
+        },
         agent_name: DataTypes.CHAR,
         working_area: DataTypes.CHAR,
         commission: DataTypes.DECIMAL,
         phone_no: DataTypes.CHAR,
         country: DataTypes.STRING,
-        createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
     },{
         sequelize,
         modelName: 'agents',
+        freezeTableName: true,
+        timestamps: false
     });
     return agents;
 }

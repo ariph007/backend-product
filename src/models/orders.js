@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     orders.init({
-        ord_num: DataTypes.DECIMAL,
+        ord_num: {
+            primaryKey: true,
+            type: DataTypes.DECIMAL
+        },
         ord_amount: DataTypes.DECIMAL,
         advance_amount: DataTypes.DECIMAL,
         ord_date: DataTypes.DATEONLY,
@@ -24,6 +27,8 @@ module.exports = (sequelize, DataTypes) => {
     },{
         sequelize,
         modelName: 'orders',
+        freezeTableName: true,
+        timestamps: false
     });
     return orders;
 }

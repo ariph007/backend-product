@@ -52,14 +52,6 @@ module.exports = {
         allowNull:false,
         type:Sequelize.CHAR(6)
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     })
   },
 

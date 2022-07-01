@@ -27,14 +27,6 @@ module.exports = {
       country:{
         type: Sequelize.STRING(25)
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     })
   },
 
