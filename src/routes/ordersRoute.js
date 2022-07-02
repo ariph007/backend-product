@@ -9,6 +9,7 @@ router.get('/detail', ordersController.getDetailOrder);
 router.put('/:ord_num', ordersController.updateOrders);
 router.delete('/:ord_num', ordersController.deleteOrder);
 router.get('/by_cust', ordersController.filterOrderByCustomer);
+router.get('/rangedate', ordersController.getOrderByRangeDate);
 
 
 module.exports = router

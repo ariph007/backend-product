@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const {orders} = require('../models');
 
 exports.createOrder = async(req,res)=>{
@@ -119,6 +120,30 @@ exports.filterOrderByCustomer = async (req, res) =>{
         return res.status(200).send({
             message: 'retrieve success',
             data: getOrder
+        })
+    } catch (error) {
+        res.status(500).send({
+            code: 500,
+            status: false,
+            message: error.message,
+            data: null
+        })
+    }
+};
+
+exports.getOrderByRangeDate = async (req, res) =>{
+    try {
+        const startDate = req.body.starDate
+        const endDate = req.body.endDate
+        let getOrderRangeDate = await orders.findAll({
+            where: {
+                "ord_date": {[Op.between] : [startDate, endDate]}
+            }
+        })
+
+        return res.status(200).send({
+            message: 'retrieve success',
+            data: getOrderRangeDate
         })
     } catch (error) {
         res.status(500).send({
