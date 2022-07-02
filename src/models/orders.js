@@ -4,11 +4,11 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class orders extends Model {
         static associations(models) {
-            models.orders.hasMany(model.customer, {
+            models.orders.hasMany(models.customer, {
                 foreignKey: 'cust_code'
             });
 
-            models.orders.hasMany(model.agents, {
+            models.orders.hasMany(models.agents, {
                 foreignKey: 'agent_code'
             });
         }
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         advance_amount: DataTypes.DECIMAL,
         ord_date: DataTypes.DATEONLY,
         cust_code: DataTypes.STRING,
-        agent_code: DataTypes.STRING,
+        agent_code: DataTypes.CHAR,
         ord_description: DataTypes.STRING,
     },{
         sequelize,

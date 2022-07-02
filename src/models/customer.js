@@ -4,12 +4,10 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class customer extends Model {
         static associations(models) {
-            //hasone => one to one => source.hasone(target) => fk def in trg O
             models.customer.hasOne(models.orders,{
                 foreigKey: 'cust_code'
             });
 
-            //hasone => one to one => source.belongsTo(target) => fk def in src A
             models.customer.belongsTo(models.agents,{
                 foreigKey: 'agent_code'
             })

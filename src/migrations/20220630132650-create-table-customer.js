@@ -50,17 +50,16 @@ module.exports = {
       },
       agent_code:{
         allowNull:false,
-        type:Sequelize.CHAR(6)
+        type:Sequelize.CHAR(6),
+        references: {
+          model: 'agents',
+          key: 'agent_code'
+        }
       },
     })
   },
 
   async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('users');
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     */
   }
 };

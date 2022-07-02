@@ -4,10 +4,10 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class agents extends Model {
         static associations(models) {
-            models.agents.hasOne(model.customer, {
+            models.agents.hasOne(models.customer, {
                 foreignKey: 'agent_code'
             });
-            models.agents.hasOne(model.orders, {
+            models.agents.hasOne(models.orders, {
                 foreignKey: 'agent_code'
             });
 

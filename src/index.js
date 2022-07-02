@@ -6,6 +6,7 @@ const cors = require('cors');
 const { sequelize } = require('./models');
 const customerRouter = require('../src/routes/customerRoute')
 const agentsRouter = require('../src/routes/agentsRoute')
+const ordersRouter = require('../src/routes/ordersRoute')
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +27,7 @@ sequelize
 
 app.use('/customer', customerRouter)
 app.use('/agents', agentsRouter)
+app.use('/orders', ordersRouter)
 
 
 app.listen(process.env.SERVER_PORT, () => {console.log('Server Running')});
