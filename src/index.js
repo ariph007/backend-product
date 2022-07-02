@@ -4,10 +4,9 @@ const cors = require('cors');
 
 // const router = require('./routes/router');
 const { sequelize } = require('./models');
-const customerRouter = require('../src/routes/customerRoute')
-const agentsRouter = require('../src/routes/agentsRoute')
-const ordersRouter = require('../src/routes/ordersRoute')
 const app = express();
+const kategoriRouter = require('../src/routes/kategoriRoute')
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,9 +24,8 @@ sequelize
         console.log('Unable to connect to the database:', err);
     });
 
-app.use('/customer', customerRouter)
-app.use('/agents', agentsRouter)
-app.use('/orders', ordersRouter)
+app.use('/kategori', kategoriRouter)
+
 
 
 app.listen(process.env.SERVER_PORT, () => {console.log('Server Running')});
