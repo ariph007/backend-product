@@ -5,10 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     class agents extends Model {
         static associations(models) {
             models.agents.hasOne(models.customer, {
-                foreignKey: 'agent_code'
+                foreignKey: 'agent_code',
+                onDelete: 'CASCADE',
+                onUpdate : 'CASCADE',
+                hooks: true
             });
             models.agents.hasOne(models.orders, {
-                foreignKey: 'agent_code'
+                foreignKey: 'agent_code',
+                onDelete: 'CASCADE',
+                onUpdate : 'CASCADE'
             });
 
         }

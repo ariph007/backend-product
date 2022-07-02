@@ -5,11 +5,17 @@ module.exports = (sequelize, DataTypes) => {
     class customer extends Model {
         static associations(models) {
             models.customer.hasOne(models.orders,{
-                foreigKey: 'cust_code'
+                foreigKey: 'cust_code',
+                onDelete: 'CASCADE',
+                hooks: true,
+                onUpdate : 'CASCADE'
             });
 
             models.customer.belongsTo(models.agents,{
-                foreigKey: 'agent_code'
+                foreigKey: 'agent_code',
+                onDelete: 'CASCADE',
+                onUpdate : 'CASCADE',
+                hooks: true
             })
         }
     }

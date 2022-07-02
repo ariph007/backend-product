@@ -5,11 +5,15 @@ module.exports = (sequelize, DataTypes) => {
     class orders extends Model {
         static associations(models) {
             models.orders.hasMany(models.customer, {
-                foreignKey: 'cust_code'
+                foreignKey: 'cust_code',
+                // onDelete: 'CASCADE',
+                onUpdate : 'CASCADE'
             });
 
             models.orders.hasMany(models.agents, {
-                foreignKey: 'agent_code'
+                foreignKey: 'agent_code',
+                // onDelete: 'CASCADE',
+                // onUpdate : 'CASCADE'
             });
         }
     }
